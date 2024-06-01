@@ -1,3 +1,8 @@
+<?php
+	include('koneksi.php');
+	include('library.php');
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
