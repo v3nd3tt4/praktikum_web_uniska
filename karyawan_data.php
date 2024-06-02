@@ -24,25 +24,35 @@
                     <th>Tools</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody>                
+                <?php 
+                    $mySql = "SELECT * FROM tkaryawan";
+                    $myQry = mysqli_query($koneksi, $mySql) or die (" Query salah: ".mysqli_error($koneksi));
+                    $nomor = 1;
+                    while($komlomData = mysqli_fetch_array($myQry)){
+                ?>
                 <tr>
-                    <td>1.</td>
-                    <td>8099001</td>
-                    <td>Fathul Hafidh</td>
-                    <td>Tanah Bumbu</td>
-                    <td>6 Januari 1990</td>
-                    <td>082153278782</td>
-                    <td>Manajer</td>
-                    <td>Tetap</td>
+                    <td><?=$nomor++?></td>
+                    <td><?=$komlomData['nik']?></td>
+                    <td><?=$komlomData['nama']?></td>
+                    <td><?=$komlomData['tempat_lahir']?></td>
+                    <td><?=IndonesiaTgl($komlomData['tanggal_lahir'])?></td>
+                    <td><?=$komlomData['no_telepon']?></td>
+                    <td><?=$komlomData['jabatan']?></td>
+                    <td><?=$komlomData['status']?></td>
                     <td>
-                        <a href="karyawan_edit.php" title="Edit Data" class="btn btn-primary btn-sm">
+                        <a href="karyawan_edit.php?nik=<?=$komlomData['nik']?>" title="Edit Data" class="btn btn-primary btn-sm">
                             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                         </a>
-                        <a href="karyawan_delete.php" title="Hapus Data" class="btn btn-danger btn-sm">
+                        <a href="karyawan_delete.php?nik=<?=$komlomData['nik']?>" title="Hapus Data" class="btn btn-danger btn-sm">
                             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                         </a>
                     </td>
                 </tr>
+
+                <?php
+                    }
+                ?>
             </tbody>
         </table>
     </div>

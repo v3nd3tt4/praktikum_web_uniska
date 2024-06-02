@@ -1,9 +1,19 @@
 <?php
 	include('header.php');
+    $myQry = mysqli_query($koneksi, "SELECT * FROM tkaryawan");
 ?>
 <h2>Laporan Data Karyawan</h2>
 <hr/>
 <div class="table-responsive">
+    <?php
+    if(mysqli_num_rows($myQry) == 0){
+        ?>
+            <div class="alert alert-danger alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> Data tidak ada..!
+            </div>
+        <?php
+        }else{
+        ?>    
     <table class="table table-striped table-hover">
         <thead>
             <tr>
@@ -18,18 +28,28 @@
             </tr>
         </thead>
         <tbody>
+            <?php                     
+                $nomor = 1;
+                while($komlomData = mysqli_fetch_array($myQry)){
+            ?>
             <tr>
-                <td>1</td>
-                <td>8099001</td>
-                <td>Fathul Hafidh</td>
-                <td>Tanah Bumbu</td>
-                <td>6 Januari 1990</td>
-                <td>082153278782</td>
-                <td>Manajer</td>
-                <td>Tetap</td>
+                <td><?=$nomor++?></td>
+                <td><?=$komlomData['nik']?></td>
+                <td><?=$komlomData['nama']?></td>
+                <td><?=$komlomData['tempat_lahir']?></td>
+                <td><?=IndonesiaTgl($komlomData['tanggal_lahir'])?></td>
+                <td><?=$komlomData['no_telepon']?></td>
+                <td><?=$komlomData['jabatan']?></td>
+                <td><?=$komlomData['status']?></td>                    
             </tr>
+            <?php
+                }
+            ?>
         </tbody>
     </table>
+    <?php
+        }
+    ?>
 </div>
 <img src="img/btn_print.png" width="25" alt="" onclick="window.print()">
 <?php

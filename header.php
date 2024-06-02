@@ -22,10 +22,15 @@
 						<li><a href="#">Master Data</a>
 						<ul>
 							<li><a href="karyawan_data.php">Data Karyawan</a></li>
+							<li><a href="gudang_data.php">Data Gudang</a></li>
 						</ul>
 						</li>
-						<li><a href="#">Laporan</a></li>
-						<li><a href="karyawan_cetak.php">Cetak Data Karyawan</a></li>
+						<li>
+							<a href="#">Laporan</a>
+							<ul>
+								<li><a href="karyawan_cetak.php">Cetak Data Karyawan</a></li>
+							</ul>
+						</li>						
 						<li><a href="tentang-saya.php">Tentang Saya</a></li>
 					</ul>
 				</div>

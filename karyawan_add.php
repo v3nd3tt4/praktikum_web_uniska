@@ -1,5 +1,43 @@
 <?php
 	include('header.php');
+    $now = strtotime(date('Y-m-d'));
+    $maxYear = date('Y-m-d', strtotime('- 16 year', $now));
+    $minYear = date('Y-m-d', strtotime('- 50 year', $now));
+
+    if(isset($_POST['add'])){
+        $nik = $_POST['nik'];
+        $nama = $_POST['nama'];
+        $tempat_lahir = $_POST['tempat_lahir'];
+        $tanggal_lahir = $_POST['tanggal_lahir'];
+        $alamat = $_POST['alamat'];
+        $no_telepon = $_POST['no_telepon'];
+        $jabatan = $_POST['jabatan'];
+        $status = $_POST['status'];
+
+        $cek = mysqli_query($koneksi, "SELECT * FROM tkaryawan where nik = '$nik'");
+        if(mysqli_num_rows($cek) > 0){
+    ?>
+            <div class="alert alert-danger alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> NIK sudah ada..!
+            </div>
+    <?php
+        }else{
+            $insert = mysqli_query($koneksi, "INSERT INTO tkaryawan (`nik`, `nama`, `tempat_lahir`, `tanggal_lahir`, `alamat`, `no_telepon`, `jabatan`, `status`) VALUES ('$nik','$nama', '$tempat_lahir', '$tanggal_lahir', '$alamat', '$no_telepon', '$jabatan', '$status')") or die (mysqli_error($koneksi));
+            if($insert){
+            ?>
+                <div class="alert alert-success alert-dismissable">
+                    <button class="close" data-dismiss="alert" aria-hidden="true">&times;</button> Data Karyawan berhasil disimpan
+                </div>
+            <?php
+            }else{
+            ?>
+                <div class="alert alert-danger alert-dismissable">
+                <button class="close" data-dismiss="alert" aria-hidden="true">&times;</button> Ups, Data Karyawan gagal disimpan
+            </div>
+            <?php
+            }
+        }
+    }
 ?>
 <div class="col-sm-9">
 	<h2>Data Karyawan &raquo; Tambah Data</h2>
@@ -8,7 +46,7 @@
         <div class="form-group">
             <label for="" class="col-sm-3 control-label">NIK</label>
             <div class="col-sm-2">
-                <input type="text" name="nik" class="form-control" maxlength="10" placeholder="NIK" required>
+                <input type="number" name="nik" class="form-control" maxlength="10" placeholder="NIK" required>
             </div>
         </div>
         <div class="form-group">
@@ -26,7 +64,7 @@
         <div class="form-group">
             <label for="" class="col-sm-3 control-label">Tanggal Lahir</label>
             <div class="col-sm-4">
-                <input type="date" name="tanggal_lahir" class="form-control input-group" placeholder="NIK" required>
+                <input type="date" name="tanggal_lahir" min="<?=$minYear?>" max="<?=$maxYear?>" class="form-control input-group" placeholder="Tanggal Lahir" required>
             </div>
         </div>
         <div class="form-group">
