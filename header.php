@@ -19,6 +19,11 @@
 				<div id="navbar">
 					<ul class="dropDownMenu">
 						<li><a href="./">Beranda</a></li>
+						<li><a href="#">Proses Data</a>
+						<ul>
+							<li><a href="karyawan_data.php">Distribusi Karyawan</a></li>							
+						</ul>
+						</li>
 						<li><a href="#">Master Data</a>
 						<ul>
 							<li><a href="karyawan_data.php">Data Karyawan</a></li>
@@ -29,6 +34,7 @@
 							<a href="#">Laporan</a>
 							<ul>
 								<li><a href="karyawan_cetak.php">Cetak Data Karyawan</a></li>
+								<li><a href="gudang_cetak.php">Cetak Data Gudang</a></li>
 							</ul>
 						</li>						
 						<li><a href="tentang-saya.php">Tentang Saya</a></li>

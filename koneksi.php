@@ -1,7 +1,7 @@
 <?php
     $db_host = 'localhost';
     $db_user = 'root';
-    $db_pass = '';
+    $db_pass = 'goldroger27';
     $db_name = 'uniska_latihan_app';
 
     $koneksi = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
