@@ -35,6 +35,7 @@
 							<ul>
 								<li><a href="karyawan_cetak.php">Cetak Data Karyawan</a></li>
 								<li><a href="gudang_cetak.php">Cetak Data Gudang</a></li>
+								<li><a href="distribusi_pilih.php">Cetak Data Distribusi</a></li>
 							</ul>
 						</li>						
 						<li><a href="tentang-saya.php">Tentang Saya</a></li>

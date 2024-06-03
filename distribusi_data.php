@@ -36,7 +36,7 @@
                     <td><?=$nomor++?></td>
                     <td><?=$komlomData['nama_gudang']?></td>
                     <td><?=$komlomData['lokasi_gudang']?></td>
-                    <td><?=$komlomData['luas_gudang']?> m2</td>
+                    <td><?=$komlomData['luas_gudang']?> m<sup>2</sup> </td>
                     <td><?=$komlomData['jumlah_karyawan']?> </td>
                     <td>
                         <a href="distribusi_detail.php?id=<?=$komlomData['id_gudang']?>" title="Detail Data" class="btn btn-primary btn-sm">
