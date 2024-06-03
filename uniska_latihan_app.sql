@@ -1,56 +1,59 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Jun 02, 2024 at 03:36 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+/*
+SQLyog Ultimate v13.1.1 (64 bit)
+MySQL - 10.4.32-MariaDB : Database - uniska_latihan_app
+*********************************************************************
+*/
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
+/*!40101 SET NAMES utf8 */;
 
+/*!40101 SET SQL_MODE=''*/;
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`uniska_latihan_app` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
 
---
--- Database: `uniska_latihan_app`
---
+USE `uniska_latihan_app`;
 
--- --------------------------------------------------------
+/*Table structure for table `gudang` */
 
---
--- Table structure for table `gudang`
---
+DROP TABLE IF EXISTS `gudang`;
 
 CREATE TABLE `gudang` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama_gudang` varchar(100) NOT NULL,
   `lokasi_gudang` varchar(200) NOT NULL,
-  `luas_gudang` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `luas_gudang` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
+/*Data for the table `gudang` */
 
---
--- Table structure for table `karyawan_gudang`
---
+insert  into `gudang`(`id`,`nama_gudang`,`lokasi_gudang`,`luas_gudang`) values 
+(1,'Quibusdam nostrum li edit','Qui maxime itaque ad',550),
+(3,'Laudantium ex repre','Accusantium et sapie',300);
+
+/*Table structure for table `karyawan_gudang` */
+
+DROP TABLE IF EXISTS `karyawan_gudang`;
 
 CREATE TABLE `karyawan_gudang` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nik` varchar(10) NOT NULL,
-  `id_gudang` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `id_gudang` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
+/*Data for the table `karyawan_gudang` */
 
---
--- Table structure for table `tkaryawan`
---
+insert  into `karyawan_gudang`(`id`,`nik`,`id_gudang`) values 
+(0,'17',1),
+(2,'87',3);
+
+/*Table structure for table `tkaryawan` */
+
+DROP TABLE IF EXISTS `tkaryawan`;
 
 CREATE TABLE `tkaryawan` (
   `nik` char(20) NOT NULL,
@@ -60,41 +63,18 @@ CREATE TABLE `tkaryawan` (
   `alamat` text NOT NULL,
   `no_telepon` char(12) NOT NULL,
   `jabatan` varchar(15) NOT NULL,
-  `status` varchar(15) NOT NULL
+  `status` varchar(15) NOT NULL,
+  PRIMARY KEY (`nik`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `tkaryawan`
---
+/*Data for the table `tkaryawan` */
 
-INSERT INTO `tkaryawan` (`nik`, `nama`, `tempat_lahir`, `tanggal_lahir`, `alamat`, `no_telepon`, `jabatan`, `status`) VALUES
-('17', 'Eum aute commodi fac edit', 'Aute ratione consequ', '2009-10-12', 'Voluptas sed similiq', 'Pariatur Es', 'Supervisor', 'Tetap'),
-('55', 'Quae molestias ut no', 'Totam omnis harum te', '2018-06-17', 'Et consequat Occaec', 'Ut labore ni', 'Operator', 'Tetap'),
-('87', 'Adipisicing anim ten edit', 'Asperiores non repel', '2018-01-15', 'Accusantium velit la', 'Sunt velit e', 'Operator', 'Outsourcing');
+insert  into `tkaryawan`(`nik`,`nama`,`tempat_lahir`,`tanggal_lahir`,`alamat`,`no_telepon`,`jabatan`,`status`) values 
+('17','Eum aute commodi fac edit','Aute ratione consequ','2009-10-12','Voluptas sed similiq','Pariatur Es','Supervisor','Tetap'),
+('55','Quae molestias ut no','Totam omnis harum te','2018-06-17','Et consequat Occaec','Ut labore ni','Operator','Tetap'),
+('87','Adipisicing anim ten edit','Asperiores non repel','2018-01-15','Accusantium velit la','Sunt velit e','Operator','Outsourcing');
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `gudang`
---
-ALTER TABLE `gudang`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `karyawan_gudang`
---
-ALTER TABLE `karyawan_gudang`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tkaryawan`
---
-ALTER TABLE `tkaryawan`
-  ADD PRIMARY KEY (`nik`);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
