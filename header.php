@@ -21,7 +21,7 @@
 						<li><a href="./">Beranda</a></li>
 						<li><a href="#">Proses Data</a>
 						<ul>
-							<li><a href="karyawan_data.php">Distribusi Karyawan</a></li>							
+							<li><a href="distribusi_data.php">Distribusi Karyawan</a></li>							
 						</ul>
 						</li>
 						<li><a href="#">Master Data</a>
